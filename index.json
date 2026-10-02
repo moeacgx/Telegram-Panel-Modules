@@ -1,4 +1,12 @@
 {
   "schemaVersion": 1,
-  "modules": []
+  "modules": [
+    {
+      "id": "demo.kick-api",
+      "name": "演示模块：外部 API 踢人/封禁",
+      "version": "1.0.1",
+      "downloadUrl": "https://api.github.com/repos/moeacgx/Telegram-Panel-Modules/releases/assets/605668153",
+      "sha256": "ac608c8c080f4567ae61d2d371111cdf5a434be73930573182aa094abd2a09bb"
+    }
+  ]
 }
