@@ -33,4 +33,3 @@ public sealed class KickApiDefinition
     public List<long> ChatIds { get; set; } = new();
     public bool PermanentBanDefault { get; set; }
 }
-

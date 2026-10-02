@@ -6,14 +6,14 @@
 
 ## 版本与安装
 
-- 模块版本：`1.0.0`。
+- 模块版本：`1.0.1`。
 - 目标宿主：`1.31.77`，需包含取消内置踢人 API 的改动；旧 `1.31.76` 不兼容。
 - 宿主版本范围有意收紧，因为模块引用了宿主 Core 中的 Bot/任务服务；升级宿主后需重新验证。
 - 模块包入口为 `Demo.KickApi.dll`，只包含入口程序集和 manifest。
   Vue 页面及 Vue 3.5.39 资源嵌入程序集，无需网络 CDN或宿主的旧静态资源目录。
 
 面板「模块管理 → 官方模块仓库 → 连接 / 刷新目录 → 安装此版本」，安装后启用并重启。
-也可以手动上传 Release 中的 `demo.kick-api-1.0.0.tpm`。
+也可以手动上传 Release 中的 `demo.kick-api-1.0.1.tpm`。
 在 API 管理添加 `kick` 配置，设置 API 密钥、Bot 和允许操作的频道/群组。
 
 ### 从旧内置功能迁移
@@ -53,7 +53,7 @@ powershell -ExecutionPolicy Bypass -File tools/package.ps1 -HostRoot C:/path/Tel
 dotnet test tests/Demo.KickApi.Tests.csproj -c Release -p:HostRoot=C:/path/Telegram-Panel
 ```
 
-主项目子模块布局中可省略 `HostRoot`。输出位于 `artifacts/demo.kick-api-1.0.0.tpm`。
+主项目子模块布局中可省略 `HostRoot`。输出位于 `artifacts/demo.kick-api-1.0.1.tpm`。
 脚本只打包入口程序集；页面与 Vue 资源已嵌入，不附带宿主的 Core/Data/Abstractions DLL。
 发布步骤见仓库根目录维护说明；不要覆盖已发布的同版本包。
 

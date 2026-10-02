@@ -65,4 +65,24 @@ public sealed class KickModuleTests
                 Task = new() { TaskType = handler.TaskType, OwnerModuleId = "demo.kick-api", ExecutionKind = "batch", Config = config }
             }));
     }
+
+    [Fact]
+    public async Task Executor_rejects_negative_bot_before_resolving_any_telegram_service()
+    {
+        using var services = new ServiceCollection().BuildServiceProvider();
+        var error = await Assert.ThrowsAsync<InvalidOperationException>(() => new ExternalApiKickTaskHandler().ExecuteAsync(
+            new TestHost(services, JsonSerializer.Serialize(new KickTaskLog { BotId = -1, UserId = 123, UseAllChats = true })), default));
+        Assert.Equal("任务 BotId 无效", error.Message);
+    }
+
+    private sealed class TestHost(IServiceProvider services, string config) : IModuleTaskExecutionHost
+    {
+        public int TaskId => 1;
+        public string TaskType => BatchTaskTypes.ExternalApiKick;
+        public int Total => 1;
+        public string? Config => config;
+        public IServiceProvider Services => services;
+        public Task<bool> IsStillRunningAsync(CancellationToken cancellationToken) => Task.FromResult(true);
+        public Task UpdateProgressAsync(int completed, int failed, CancellationToken cancellationToken) => Task.CompletedTask;
+    }
 }

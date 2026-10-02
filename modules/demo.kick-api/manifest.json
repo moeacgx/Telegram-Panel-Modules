@@ -1,7 +1,7 @@
 {
   "id": "demo.kick-api",
   "name": "演示模块：外部 API 踢人/封禁",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "host": { "min": "1.31.77", "max": "1.31.77" },
   "entry": { "assembly": "Demo.KickApi.dll", "type": "Demo.KickApi.KickApiModule" },
   "dependencies": []

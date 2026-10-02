@@ -15,11 +15,6 @@ public sealed class ExternalApiKickTaskHandler : IModuleTaskHandler
 
     public async Task ExecuteAsync(IModuleTaskExecutionHost host, CancellationToken cancellationToken)
     {
-        var logger = host.Services.GetRequiredService<ILogger<ExternalApiKickTaskHandler>>();
-        var taskManagement = host.Services.GetRequiredService<BatchTaskManagementService>();
-        var botManagement = host.Services.GetRequiredService<BotManagementService>();
-        var botTelegram = host.Services.GetRequiredService<BotTelegramService>();
-
         var rawConfig = (host.Config ?? "").Trim();
         if (rawConfig.Length == 0)
             throw new InvalidOperationException("任务缺少 Config");
@@ -39,6 +34,13 @@ public sealed class ExternalApiKickTaskHandler : IModuleTaskHandler
 
         if (input.UserId <= 0)
             throw new InvalidOperationException("任务 user_id 无效");
+        if (input.BotId < 0)
+            throw new InvalidOperationException("任务 BotId 无效");
+
+        var logger = host.Services.GetRequiredService<ILogger<ExternalApiKickTaskHandler>>();
+        var taskManagement = host.Services.GetRequiredService<BatchTaskManagementService>();
+        var botManagement = host.Services.GetRequiredService<BotManagementService>();
+        var botTelegram = host.Services.GetRequiredService<BotTelegramService>();
 
         input.ChatIds ??= new List<long>();
 

@@ -19,7 +19,7 @@ public sealed class KickApiModule : ITelegramPanelModule, IModuleApiProvider, IM
         {
             Id = "demo.kick-api",
             Name = "演示模块：外部 API 踢人/封禁",
-            Version = "1.0.0",
+            Version = "1.0.1",
             Host = new HostCompatibility { Min = "1.31.77", Max = "1.31.77" },
             Entry = new ModuleEntryPoint { Assembly = "Demo.KickApi.dll", Type = typeof(KickApiModule).FullName ?? "" }
         };

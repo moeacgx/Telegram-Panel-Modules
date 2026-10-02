@@ -75,6 +75,8 @@ public static class KickApi
 
         var permanentBan = request.PermanentBan ?? matched.Kick.PermanentBanDefault;
         var configuredBotId = matched.Kick.BotId;
+        if (configuredBotId < 0)
+            return Results.BadRequest(new KickResponse(false, "配置中的 BotId 无效", new KickSummary(0, 0, 0), Array.Empty<KickResultItem>()));
         var useAllChats = configuredBotId == 0 ? true : matched.Kick.UseAllChats;
         var configuredChatSet = new HashSet<long>(matched.Kick.ChatIds.Where(x => x != 0));
 
