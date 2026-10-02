@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AssemblyName>Demo.KickApi</AssemblyName>
+    <RootNamespace>Demo.KickApi</RootNamespace>
+    <Version>1.0.0</Version>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+    <InformationalVersion>1.0.0</InformationalVersion>
+    <HostRoot Condition="'$(HostRoot)' == ''">$(MSBuildThisFileDirectory)../../../</HostRoot>
+  </PropertyGroup>
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    <ProjectReference Include="$(HostRoot)/src/TelegramPanel.Modules.Abstractions/TelegramPanel.Modules.Abstractions.csproj" Private="false" />
+    <ProjectReference Include="$(HostRoot)/src/TelegramPanel.Core/TelegramPanel.Core.csproj" Private="false" />
+    <EmbeddedResource Include="wwwroot/settings.html" LogicalName="Demo.KickApi.settings.html" />
+    <EmbeddedResource Include="wwwroot/vendor/vue.esm-browser.prod.js" LogicalName="Demo.KickApi.vue.js" />
+  </ItemGroup>
+</Project>

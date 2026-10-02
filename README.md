@@ -3,14 +3,15 @@
 Telegram Panel 官方公开模块目录，也可作为个人模块仓库模板。主项目：
 [Telegram-Panel](https://github.com/moeacgx/Telegram-Panel)。
 
-目录初始为空，尚未发布模块包。主项目已有的私有模块不会自动复制到公开仓库。
-只有拥有公开分发权、通过兼容性验收的包才能加入官方目录。
+首个公开演示为[踢人 / 封禁 API](modules/demo.kick-api/README.md)，包含源码、静态 Vue 页面、
+后台任务执行和可安装 `.tpm`。需要宿主 `1.31.77` 的外置模块改动，旧宿主不兼容。
+主项目已有的私有模块不会自动复制到公开仓库。只有拥有公开分发权的包才能加入官方目录。
 
 ## 面板接入
 
 前置条件：使用包含「在线模块仓库」功能的 Telegram Panel 版本。
 在模块管理页选择 GitHub 类型，仓库填 `moeacgx/Telegram-Panel-Modules`，分支填 `main`。
-连接成功后显示目录。空目录是正常状态，不表示连接失败。
+连接成功后显示可安装版本。模块兼容范围、前置条件和验收边界见各模块 README。
 
 个人使用者可以 Fork 本仓库或自行建立同结构仓库，在面板添加自己的 `owner/repo`。
 仓库可以公开或私有。GitHub 私有仓库使用目标仓库 **Contents: Read** 的细粒度令牌；
