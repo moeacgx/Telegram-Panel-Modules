@@ -86,3 +86,16 @@ git add module-repository
 
 最后一步只暂存引用，仍需在主项目走功能分支 → dev → 云端验收 → main。
 运行中的面板通过 HTTPS 拉取目录，不依赖部署目录包含 Git 子模块。
+
+## AI 模块开发技能
+
+仓库附带 [tgpanel-module-workflow](skills/tgpanel-module-workflow/SKILL.md)，覆盖开发、任务合同、轻量编译、目录发布和验收。
+可让 Agent 读取该文件，或将整个 `skills/tgpanel-module-workflow` 文件夹复制到工具的技能目录
+（例如 Codex 的 `~/.codex/skills/`、Claude Code 的 `~/.claude/skills/`），保留 references 子目录。
+技能不依赖维护者本机路径、不含凭据；更新时与目标宿主合同一起复核。以仓库真实演示源码作为模板。
+
+## 源码与安装包
+
+Git 保存源码，Release 提供编译后的轻量 `.tpm`，根目录 `index.json` 是面板安装目录。
+面板下载 DLL 包，不在线编译源码。轻量包复用宿主依赖，仍保留自己的入口和必要资源。
+Fork 不会复制 Release；自行修改后需构建、发布自己的包并更新 URL 与哈希。
